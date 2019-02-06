@@ -2,7 +2,7 @@ require_relative('../models/students.rb')
 require_relative('../models/house.rb')
 
 house1 = House.new({
-  "name" => "Griffidor"
+  "name" => "Griffindor"
   })
 
 house2 = House.new({

@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('house')
 
 class Student
 
@@ -9,6 +10,15 @@ class Student
     @name = person['name']
     @house = person['house']
     @age = person['age']
+  end
+
+  def find_house
+      sql = "SELECT * FROM houses
+             WHERE id = $1"
+      values = [@house]
+      result = SqlRunner.run(sql, values)
+      house = House.new(result.first)
+      return house.name
   end
 
   def save()
