@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('students')
 
 class House
 
@@ -7,6 +8,15 @@ class House
   def initialize(house)
     @id = house['id'].to_i if house['id']
     @name = house['name']
+  end
+
+  def self.find_students()
+    sql = "SELECT * FROM students
+            WHERE students.house = $1"
+    values = [@id]
+    students = SqlRunner.run(sql, values)
+    result = students.map { |person| Student.new( person ) }
+    return result
   end
 
   def save()

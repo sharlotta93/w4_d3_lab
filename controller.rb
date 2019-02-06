@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry' )
 
 require_relative( './models/students' )
+require_relative( './models/house')
 also_reload( './models/*' )
 
 get '/students' do
@@ -19,4 +20,10 @@ post '/students' do
   @student = Student.new(params)
   @student.save
   redirect to '/students'
+end
+
+get '/students/houses' do
+  @houses = House.all()
+  @students = Student.all()
+  erb(:houses)
 end
