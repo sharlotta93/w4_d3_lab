@@ -9,9 +9,8 @@
   <% end %>
 </select>
 
-<% @houses.each do |house| %>
-<% @students.find_all {|student| student.house == house.id} %>
-<%# Here I have to find a way to list all the students maybe a for loop  %>
+<% @students.each do |student| %>
+<%= student.name %>
 <% end %>
 
 </form>

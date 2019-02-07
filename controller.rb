@@ -24,6 +24,6 @@ end
 
 get '/students/houses' do
   @houses = House.all()
-  @students = Student.all()
+  @students = House.find_students()
   erb(:houses)
 end
